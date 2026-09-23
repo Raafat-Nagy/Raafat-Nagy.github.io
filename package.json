@@ -1,0 +1,39 @@
+{
+  "name": "raafat-nagy-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Personal portfolio of Raafat Nagy — AI Engineer. Built with React, TypeScript, Vite, Tailwind CSS and Framer Motion.",
+  "homepage": "https://raafat-nagy.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raafat-Nagy/Raafat-Nagy.github.io.git"
+  },
+  "author": "Raafat Nagy",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test:nav": "node scripts/build-harness.mjs && node scripts/nav-check.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "13.4.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "^26.6.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "jsdom": "30.1.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "vite": "8.3.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

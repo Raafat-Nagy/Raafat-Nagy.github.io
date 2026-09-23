@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0c10"/>
+  <g stroke="#161c24" stroke-width="1">
+    <path d="M0 90h1200M0 180h1200M0 270h1200M0 360h1200M0 450h1200M0 540h1200"/>
+    <path d="M120 0v630M240 0v630M360 0v630M480 0v630M600 0v630M720 0v630M840 0v630M960 0v630M1080 0v630"/>
+  </g>
+  <g>
+    <rect x="880" y="150" width="190" height="120" fill="none"/>
+    <path d="M880 150v22h22M1048 150h22v22M1070 248v22h-22M902 270h-22v-22" stroke="#2dd4bf" stroke-width="4" fill="none"/>
+    <rect x="880" y="118" width="120" height="24" rx="4" fill="#2dd4bf"/>
+    <text x="890" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#05232a">AI·ENG 1.00</text>
+  </g>
+  <text x="110" y="290" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="84" font-weight="800" fill="#e8ebf0">Raafat Nagy</text>
+  <text x="112" y="350" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="26" font-weight="500" letter-spacing="8" fill="#2dd4bf">AI ENGINEER</text>
+  <text x="112" y="425" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="24" fill="#9aa4b2">Computer Vision · NLP / RAG · Deep Learning · Machine Learning · Time Series</text>
+  <rect x="112" y="470" width="7" height="7" fill="#2dd4bf"/>
+  <rect x="126" y="472.5" width="180" height="2" fill="#1e242e"/>
+</svg>
