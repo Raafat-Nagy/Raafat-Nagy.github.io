@@ -11,10 +11,11 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment, skip queued runs
+# Only this workflow may publish the site. Keep deployments serialized so an
+# older Pages deployment cannot finish after a newer artifact and replace it.
 concurrency:
   group: github-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -41,10 +42,10 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Base path resolved by the Pages configuration:
-          #   user site  (<user>.github.io)        -> ""   => "/"
-          #   project site (<user>.github.io/repo) -> "/repo"
-          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # This is a GitHub User Pages site. Do not derive this from a
+          # transient Pages configuration value: production is always rooted
+          # at https://raafat-nagy.github.io/.
+          BASE_PATH: /
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
