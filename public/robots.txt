@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raafat-nagy.github.io/sitemap.xml
