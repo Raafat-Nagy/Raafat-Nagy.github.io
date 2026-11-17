@@ -13,6 +13,9 @@ export interface ProjectLink {
   url: string;
 }
 
+/** What you write in projects.ts: `videoId` is derived, so it is not part of the input. */
+export type ProjectInput = Omit<Project, 'videoId'>;
+
 export interface Project {
   /** Project name as listed in the AI Projects Hub README. */
   title: string;
@@ -20,10 +23,17 @@ export interface Project {
   tagline: string;
   /** Short paragraph used for featured projects and cards. */
   description: string;
-  category: ProjectCategory;
+  /**
+   * Every category this project appears under. The first one is its primary
+   * category, shown on the card.
+   */
+  categories: ProjectCategory[];
   technologies: string[];
   links: ProjectLink[];
-  /** YouTube video id — used to build the demo thumbnail. */
+  /**
+   * YouTube video id, derived automatically from the first YouTube `demo` link.
+   * Do not set it by hand.
+   */
   videoId?: string;
   /**
    * Set true only for videos VERIFIED to have a high-res (branded)

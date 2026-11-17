@@ -87,7 +87,7 @@ function FeaturedProjectRow({ project, index }: { project: Project; index: numbe
         </a>
       ) : (
         <ImagelessShowcase
-          category={project.category}
+          category={project.categories[0]}
           className={cn('shadow-2xl shadow-black/10', reversed && 'sm:order-2')}
         />
       )}
@@ -95,7 +95,7 @@ function FeaturedProjectRow({ project, index }: { project: Project; index: numbe
       {/* Content */}
       <div className={cn(reversed && 'sm:order-1')}>
         <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
-          {String(index + 1).padStart(2, '0')} — {project.category}
+          {String(index + 1).padStart(2, '0')} — {project.categories[0]}
         </p>
         <h3 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           {project.title}

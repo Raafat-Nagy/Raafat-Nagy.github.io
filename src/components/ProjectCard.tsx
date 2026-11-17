@@ -45,13 +45,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           className="aspect-[16/9] border-b border-line"
         />
       ) : (
-        <ImagelessCardHeader category={project.category} />
+        <ImagelessCardHeader category={project.categories[0]} />
       )}
 
       <div className="flex flex-1 flex-col p-5">
         {showThumb && (
           <p className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-accent">
-            {project.category}
+            {project.categories[0]}
           </p>
         )}
         <h3

@@ -1,4 +1,10 @@
-import type { Project, ProjectCategory, ProjectFilter } from '../types/project';
+import type {
+    Project,
+    ProjectCategory,
+    ProjectFilter,
+    ProjectInput,
+} from '../types/project';
+import { youtubeIdFromUrl } from '../utils/youtube';
 
 export const PROJECT_CATEGORIES: ProjectCategory[] = [
     'Computer Vision',
@@ -18,7 +24,7 @@ const DEEP_LEARNING_REPO = 'https://github.com/Raafat-Nagy/Deep-Learning-Project
  * Every project below is extracted from the AI Projects Hub README:
  * https://github.com/Raafat-Nagy/AI-Projects-Hub
  */
-export const projects: Project[] = [
+const projectInputs: ProjectInput[] = [
     // ------------------------------------------------------------------
     // Computer Vision
     // ------------------------------------------------------------------
@@ -27,7 +33,7 @@ export const projects: Project[] = [
         tagline: 'Seated guest counting and table occupancy tracking',
         description:
             'Analyzes restaurant video to estimate seated guests and table occupancy. YOLO26 Pose detects people frame by frame, standing people are filtered out, counts are stabilized per table, and occupancy sessions are stored in SQLite. Processed video is streamed as MJPEG with an on-video dashboard.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: [
             'YOLO26 Pose',
             'OpenCV',
@@ -43,7 +49,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/iWFZjKku5C4' },
         ],
-        videoId: 'iWFZjKku5C4',
         thumbMaxres: true,
     },
     {
@@ -51,14 +56,13 @@ export const projects: Project[] = [
         tagline: 'Local vision-language AI with conversation memory',
         description:
             'Vision chat assistant that keeps conversation context — upload an image once, ask follow-up questions, all with fully local inference.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['llama.cpp', 'LangChain', 'Chainlit', 'Python'],
         links: [
             { type: 'github', url: 'https://github.com/Raafat-Nagy/Vision-Chat' },
             { type: 'demo', url: 'https://youtu.be/rjfEHkhLEhU' },
         ],
         image: 'media/vision-chat.jpg',
-        videoId: 'rjfEHkhLEhU',
         thumbMaxres: true,
         featured: true,
     },
@@ -67,13 +71,12 @@ export const projects: Project[] = [
         tagline: 'Semantic image retrieval for custom datasets',
         description:
             'Semantic image retrieval with text, image and hybrid search — SigLIP embeddings indexed in FAISS, served via FastAPI with a React UI.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision', 'LLM / Agents'],
         technologies: ['SigLIP', 'FAISS', 'FastAPI', 'React', 'Python'],
         links: [
             { type: 'github', url: 'https://github.com/Raafat-Nagy/VisionSeek-AI' },
             { type: 'demo', url: 'https://youtu.be/ZqEm67eRX3g' },
         ],
-        videoId: 'ZqEm67eRX3g',
         thumbMaxres: true,
         featured: true,
     },
@@ -82,7 +85,7 @@ export const projects: Project[] = [
         tagline: 'AI-powered background removal studio',
         description:
             'High-quality background removal powered by BiRefNet — transparent PNGs, background replacement, GPU acceleration and Docker support.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['BiRefNet', 'PyTorch', 'FastAPI', 'Docker', 'Python'],
         links: [
             {
@@ -91,7 +94,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/O9JE4Gl0QDs' },
         ],
-        videoId: 'O9JE4Gl0QDs',
         thumbMaxres: true,
         featured: true,
     },
@@ -100,7 +102,7 @@ export const projects: Project[] = [
         tagline: 'Real-time traffic monitoring system',
         description:
             'Real-time traffic monitoring with YOLO + ByteTrack — detects, tracks and counts vehicles and estimates speed via perspective transformation.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['YOLO', 'ByteTrack', 'OpenCV', 'Python'],
         links: [
             {
@@ -109,7 +111,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/1HSTwBKCELk' },
         ],
-        videoId: '1HSTwBKCELk',
         thumbMaxres: true,
         featured: true,
     },
@@ -118,7 +119,7 @@ export const projects: Project[] = [
         tagline: 'Real-time object detection web app',
         description:
             'Real-time object detection web app — drag & drop uploads, multiple model options, smart video streaming and async processing.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['YOLO', 'FastAPI', 'JavaScript', 'OpenCV'],
         links: [
             {
@@ -127,7 +128,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/ONM9z99RVaU' },
         ],
-        videoId: 'ONM9z99RVaU',
         thumbMaxres: true,
     },
     {
@@ -135,7 +135,7 @@ export const projects: Project[] = [
         tagline: 'Automated face-recognition attendance',
         description:
             'Real-time face-recognition attendance via webcam, with automatic CSV logging and optional API sync.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['OpenCV', 'face_recognition', 'Python'],
         links: [
             {
@@ -149,7 +149,7 @@ export const projects: Project[] = [
         tagline: 'Zone-based people flow tracking',
         description:
             'Counts students entering and exiting halls with zone-based direction detection, CSV logging and API reporting.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['YOLO', 'OpenCV', 'Shapely', 'Python'],
         links: [
             {
@@ -163,7 +163,7 @@ export const projects: Project[] = [
         tagline: 'Real-time fatigue monitoring',
         description:
             'Real-time drowsiness monitoring using facial landmarks and the EAR method — accurate fatigue alerts for driver and workplace safety.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['OpenCV', 'dlib', 'Python'],
         links: [
             {
@@ -172,7 +172,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/aCKkCBUu3DM' },
         ],
-        videoId: 'aCKkCBUu3DM',
         thumbMaxres: true,
     },
     {
@@ -180,7 +179,7 @@ export const projects: Project[] = [
         tagline: 'Object detection as a chat bot',
         description:
             'Telegram bot that runs object detection on your photos and replies with annotated images and detection summaries.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: ['OpenCV', 'python-telegram-bot', 'Python'],
         links: [
             {
@@ -189,7 +188,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/0K8c3HZsd2U' },
         ],
-        videoId: '0K8c3HZsd2U',
         thumbMaxres: true,
     },
     {
@@ -197,7 +195,7 @@ export const projects: Project[] = [
         tagline: 'Real-time parking space occupancy monitoring',
         description:
             'Computer-vision parking occupancy monitor. YOLO26 detects vehicles via ONNX Runtime, checks detections against configurable parking-space polygons, stabilizes occupancy states to reduce flicker, and streams an annotated view with free, occupied, and total slot counts over Flask MJPEG.',
-        category: 'Computer Vision',
+        categories: ['Computer Vision'],
         technologies: [
             'YOLO26',
             'ONNX Runtime',
@@ -208,7 +206,6 @@ export const projects: Project[] = [
             'Python',
         ],
         links: [{ type: 'demo', url: 'https://www.youtube.com/watch?v=NSVfZkTG77o' }],
-        videoId: 'NSVfZkTG77o',
         thumbMaxres: true,
     },
 
@@ -220,7 +217,7 @@ export const projects: Project[] = [
         tagline: 'Reusable local LLM environment with MCP tool calling',
         description:
             'Reusable local LLM environment built on llama.cpp - GGUF inference with MCP tool calling through custom FastMCP tools, Tavily web search and a sandboxed filesystem, with model and server configs swappable independently.',
-        category: 'LLM / Agents',
+        categories: ['LLM / Agents'],
         technologies: ['llama.cpp', 'MCP', 'FastMCP', 'Tavily', 'Python'],
         links: [
             {
@@ -229,7 +226,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/_lvCz2y2v5A' },
         ],
-        videoId: '_lvCz2y2v5A',
         thumbMaxres: true,
     },
 
@@ -241,7 +237,7 @@ export const projects: Project[] = [
         tagline: 'Chat with any PDF using retrieval-augmented generation',
         description:
             'Chat with PDF documents in natural language — LangChain + FAISS retrieval with a Groq LLM, behind a FastAPI web app.',
-        category: 'NLP / RAG',
+        categories: ['NLP / RAG'],
         technologies: ['LangChain', 'FAISS', 'HuggingFace', 'Groq', 'FastAPI'],
         links: [
             {
@@ -250,7 +246,6 @@ export const projects: Project[] = [
             },
             { type: 'demo', url: 'https://youtu.be/BU5qdgPPQN0' },
         ],
-        videoId: 'BU5qdgPPQN0',
         thumbMaxres: true,
         featured: true,
     },
@@ -263,7 +258,7 @@ export const projects: Project[] = [
         tagline: 'Medical image classification with transfer learning',
         description:
             'Detects brain tumors in MRI scans with ResNet50V2 transfer learning and data augmentation.',
-        category: 'Deep Learning',
+        categories: ['Deep Learning'],
         technologies: ['TensorFlow', 'ResNet50V2', 'Transfer Learning'],
         links: [{ type: 'github', url: DEEP_LEARNING_REPO }],
     },
@@ -272,7 +267,7 @@ export const projects: Project[] = [
         tagline: 'Multi-class oral disease diagnosis',
         description:
             'Classifies six oral diseases with a fine-tuned ResNet50V2, preprocessing and augmentation.',
-        category: 'Deep Learning',
+        categories: ['Deep Learning'],
         technologies: ['TensorFlow', 'ResNet50V2', 'Fine-tuning'],
         links: [{ type: 'github', url: DEEP_LEARNING_REPO }],
     },
@@ -281,7 +276,7 @@ export const projects: Project[] = [
         tagline: 'CNN classifier for 38 plant disease categories',
         description:
             'Custom CNN classifying 38 plant disease categories with high validation accuracy.',
-        category: 'Deep Learning',
+        categories: ['Deep Learning'],
         technologies: ['TensorFlow', 'Keras', 'CNN'],
         links: [{ type: 'github', url: DEEP_LEARNING_REPO }],
     },
@@ -290,7 +285,7 @@ export const projects: Project[] = [
         tagline: 'Classic digit recognition, done right',
         description:
             'CNN for handwritten digit classification with augmentation, early stopping and learning-rate scheduling.',
-        category: 'Deep Learning',
+        categories: ['Deep Learning'],
         technologies: ['TensorFlow', 'CNN', 'Data Augmentation'],
         links: [{ type: 'github', url: DEEP_LEARNING_REPO }],
     },
@@ -299,7 +294,7 @@ export const projects: Project[] = [
         tagline: 'Image compression and denoising',
         description:
             'Simple, convolutional and denoising autoencoders for image compression and noise removal.',
-        category: 'Deep Learning',
+        categories: ['Deep Learning'],
         technologies: ['TensorFlow', 'Autoencoders', 'Keras'],
         links: [{ type: 'github', url: DEEP_LEARNING_REPO }],
     },
@@ -312,7 +307,7 @@ export const projects: Project[] = [
         tagline: 'Fundamental algorithms implemented from first principles',
         description:
             'Core algorithms — regression, SVM, decision trees, KNN, clustering and PCA — implemented from scratch in Python.',
-        category: 'Machine Learning',
+        categories: ['Machine Learning'],
         technologies: ['Python', 'Supervised Learning', 'Unsupervised Learning'],
         links: [
             {
@@ -326,7 +321,7 @@ export const projects: Project[] = [
         tagline: 'Health-risk prediction with a deployed app',
         description:
             'Diabetes risk prediction on patient health data with scikit-learn, deployed as an interactive Streamlit app.',
-        category: 'Machine Learning',
+        categories: ['Machine Learning'],
         technologies: ['scikit-learn', 'Streamlit', 'Python'],
         links: [
             {
@@ -344,7 +339,7 @@ export const projects: Project[] = [
         tagline: 'SVM classifier with an interactive app',
         description:
             'SVM classifier for Iris species from petal and sepal measurements, delivered as an interactive Streamlit app.',
-        category: 'Machine Learning',
+        categories: ['Machine Learning'],
         technologies: ['SVM', 'Streamlit', 'Python'],
         links: [
             { type: 'github', url: 'https://github.com/Raafat-Nagy/IRIS-Project' },
@@ -360,7 +355,7 @@ export const projects: Project[] = [
         tagline: 'End-to-end crypto price forecasting dashboard',
         description:
             'Bitcoin price forecasting comparing Prophet, ARIMA and Auto-ARIMA, with backtesting and uncertainty analysis in an interactive Streamlit dashboard.',
-        category: 'Time Series',
+        categories: ['Time Series'],
         technologies: ['Prophet', 'ARIMA', 'Streamlit', 'Python'],
         links: [
             {
@@ -372,12 +367,21 @@ export const projects: Project[] = [
     },
 ];
 
+/** Adds `videoId` from the first YouTube demo link, so it is written only once. */
+function withVideoId(input: ProjectInput): Project {
+    const demo = input.links.find((link) => link.type === 'demo');
+    const videoId = demo ? youtubeIdFromUrl(demo.url) : undefined;
+    return videoId ? { ...input, videoId } : { ...input };
+}
+
+export const projects: Project[] = projectInputs.map(withVideoId);
+
 export const featuredProjects = projects.filter((project) => project.featured);
 
 export function getProjectsByFilter(filter: ProjectFilter): Project[] {
     return filter === 'All'
         ? projects
-        : projects.filter((project) => project.category === filter);
+        : projects.filter((project) => project.categories.includes(filter));
 }
 
 export function getProjectCounts(): Record<ProjectFilter, number> {
@@ -385,6 +389,8 @@ export function getProjectCounts(): Record<ProjectFilter, number> {
         PROJECT_FILTERS.map((filter) => [filter, 0])
     ) as Record<ProjectFilter, number>;
     counts.All = projects.length;
-    for (const project of projects) counts[project.category] += 1;
+    for (const project of projects) {
+        for (const category of new Set(project.categories)) counts[category] += 1;
+    }
     return counts;
 }

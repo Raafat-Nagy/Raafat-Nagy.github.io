@@ -43,6 +43,9 @@ All portfolio content lives in `src/data/` — projects, technologies, education
 site details. Adding or updating a project means editing `src/data/projects.ts` only;
 every section renders from that data.
 
+To add a project to several categories, list them all in `categories` (the first one is shown on the card). The
+YouTube thumbnail comes from the first YouTube `demo` link, so there is no separate video id to keep in sync.
+
 ## Local Development
 
 ```bash
