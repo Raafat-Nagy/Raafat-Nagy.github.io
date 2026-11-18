@@ -5,7 +5,7 @@
 export const site = {
   name: 'Raafat Nagy',
   role: 'AI Engineer',
-  email: 'RaafatNagy89@gmail.com',
+  email: 'Raafat.Nagy@outlook.com',
   githubUrl: 'https://github.com/Raafat-Nagy',
   linkedinUrl: 'https://www.linkedin.com/in/raafat-nagy/',
   /** CV (hosted on Google Drive) — opens in the Drive viewer. */
