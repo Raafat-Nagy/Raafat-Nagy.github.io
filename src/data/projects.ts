@@ -378,18 +378,42 @@ export const projects: Project[] = projectInputs.map(withVideoId);
 
 export const featuredProjects = projects.filter((project) => project.featured);
 
-export function getProjectsByFilter(filter: ProjectFilter): Project[] {
-    return filter === 'All'
-        ? projects
-        : projects.filter((project) => project.categories.includes(filter));
+/**
+ * Keeps projects matching every word of `query` (case-insensitive). Words can
+ * match any field: title, tagline, description, technologies or categories.
+ */
+export function searchProjects(list: Project[], query: string): Project[] {
+    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (tokens.length === 0) return list;
+    return list.filter((project) => {
+        const haystack = [
+            project.title,
+            project.tagline,
+            project.description,
+            ...project.technologies,
+            ...project.categories,
+        ]
+            .join(' ')
+            .toLowerCase();
+        return tokens.every((token) => haystack.includes(token));
+    });
 }
 
-export function getProjectCounts(): Record<ProjectFilter, number> {
+export function getProjectsByFilter(filter: ProjectFilter, query = ''): Project[] {
+    const inCategory =
+        filter === 'All'
+            ? projects
+            : projects.filter((project) => project.categories.includes(filter));
+    return searchProjects(inCategory, query);
+}
+
+export function getProjectCounts(query = ''): Record<ProjectFilter, number> {
+    const matching = searchProjects(projects, query);
     const counts = Object.fromEntries(
         PROJECT_FILTERS.map((filter) => [filter, 0])
     ) as Record<ProjectFilter, number>;
-    counts.All = projects.length;
-    for (const project of projects) {
+    counts.All = matching.length;
+    for (const project of matching) {
         for (const category of new Set(project.categories)) counts[category] += 1;
     }
     return counts;
